@@ -13,9 +13,11 @@ Docker media stack for Ugreen NAS. Edit NAS files (like `pihole/dnsmasq.d/02-loc
 
 ## Cross-Stack: a neighbouring compose project shares this network
 
-This NAS runs other compose projects besides this one. At least one of them has its own network *and* joins `arr-stack` with the **static IP 172.20.0.20**, so Traefik can route to it. Its `.lan` mapping lives in `pihole/dnsmasq.d/02-local-dns.conf`, which is untracked and edited on the NAS.
+Before assigning or changing any static address, read [docs/IP-RESERVATIONS.md](docs/IP-RESERVATIONS.md). Preserve upstream reservations even when the corresponding service is optional or stopped; update the register and fixed-IP consumers in the same change.
 
-**IMPORTANT — this is a live hazard, not history.** That static assignment is what stops Docker handing out **Gluetun's reserved IP (172.20.0.3)** to a neighbouring container on reboot, which breaks the whole VPN stack with "Address already in use". The `ip_range: 172.20.0.128/25` in `docker-compose.traefik.yml` confines dynamic IPs to .128–.255 for the same reason. Never remove either without checking what else is on the network:
+Upstream's deployment notes describe another Compose project joining `arr-stack` at **172.20.0.20** so Traefik can route to it. This fork keeps that address reserved, but its local owner is unverified. Check the private deployment inventory before reusing it. Deployment-specific `.lan` mappings belong in the untracked `pihole/dnsmasq.d/02-local-dns.conf` on the NAS.
+
+Other projects can attach containers to this shared network. Keep their fixed assignments and the `ip_range: 172.20.0.128/25` in `docker-compose.arr-stack.yml`; the dynamic pool protects service reservations such as Gluetun's **172.20.0.3** from automatic allocation. Never remove these protections without checking what else is on the network:
 
 ```bash
 docker network inspect arr-stack --format '{{range .Containers}}{{.Name}}={{.IPv4Address}} {{end}}'
