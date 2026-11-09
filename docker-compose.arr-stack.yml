@@ -394,7 +394,7 @@ services:
   # Sonarr/Radarr. Reaches VPN-side download/indexer services via gluetun.
   # ═══════════════════════════════════════════════════════════════════════════
   lidarr:
-    image: lscr.io/linuxserver/lidarr:latest
+    image: lscr.io/linuxserver/lidarr:3.1.0.4875-ls42
     container_name: lidarr
     <<: *lsio-security
     environment:
@@ -405,7 +405,7 @@ services:
       - "8686:8686"   # Direct local access (http://NAS_IP:8686)
     networks:
       arr-stack:
-        ipv4_address: 172.20.0.12
+        ipv4_address: 172.20.0.17
     volumes:
       - lidarr-config:/config
       - ${MEDIA_ROOT}:/data

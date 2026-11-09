@@ -36,6 +36,8 @@
 
 ## Services & Network
 
+Before assigning an address, check the [IP reservation register](IP-RESERVATIONS.md). Optional and stopped services keep their reservations.
+
 | Service | IP | Port | Notes |
 |---------|-----|------|-------|
 | **Gluetun** | **172.20.0.3** | — | VPN gateway |
@@ -44,6 +46,7 @@
 | ↳ Prowlarr | (via Gluetun) | 9696 | Indexer manager |
 | Sonarr | 172.20.0.10 | 8989 | TV shows (own IP — not via VPN) |
 | Radarr | 172.20.0.11 | 7878 | Movies (own IP — not via VPN) |
+| Lidarr | 172.20.0.17 | 8686 | Music (fork addition; own bridge IP) |
 | Jellyfin | 172.20.0.4 | 8096 | Media server |
 | Pi-hole | 172.20.0.5 | 8081 | DNS ad-blocking (`/admin`) |
 | Seerr | 172.20.0.8 | 5055 | Request management |

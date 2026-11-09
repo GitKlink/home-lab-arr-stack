@@ -134,7 +134,7 @@ http:
     lidarr-lan:
       loadBalancer:
         servers:
-          - url: "http://172.20.0.12:8686"
+          - url: "http://172.20.0.17:8686"
 
     prowlarr-lan:
       loadBalancer:
