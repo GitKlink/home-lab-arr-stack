@@ -394,7 +394,7 @@ services:
   # Sonarr/Radarr. Reaches VPN-side download/indexer services via gluetun.
   # ═══════════════════════════════════════════════════════════════════════════
   lidarr:
-    image: lscr.io/linuxserver/lidarr:3.1.0.4875-ls42
+    image: lscr.io/linuxserver/lidarr:3.1.6.5079-ls47
     container_name: lidarr
     <<: *lsio-security
     environment:
