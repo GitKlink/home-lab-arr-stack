@@ -110,11 +110,13 @@ inspect its journal and let its bounded check finish.
    container-to-NAS probe cannot prove the client firewall/routing path:
 
    ```powershell
-   nslookup example.com NAS_IP
-   nslookup sonarr.lan NAS_IP
+   nslookup -type=A example.com. NAS_IP
+   nslookup -type=A sonarr.lan. NAS_IP
    ```
 
-   Check: external answers and the expected local Traefik address.
+   The trailing dots prevent Windows from appending its DNS search suffix;
+   `-type=A` checks IPv4 explicitly. Check: external answers and the expected
+   local Traefik address.
 
 3. During an agreed interruption window, restart the NAS through UGREEN's normal
    restart action. SSH will disconnect and DNS may be unavailable while it boots.
