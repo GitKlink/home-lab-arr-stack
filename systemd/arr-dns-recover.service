@@ -1,0 +1,16 @@
+[Unit]
+Description=Verify and recover Arr-stack DNS after UGREEN NAS boot
+Wants=docker_serv.service
+After=network.target docker_serv.service
+
+[Service]
+Type=oneshot
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/usr/local/sbin/arr-dns-recover
+TimeoutStartSec=330
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
