@@ -59,6 +59,7 @@ Watch: Jellyfin — locally or remotely via Traefik
 | [Architecture](docs/ARCHITECTURE.md) | Understand how the stack fits together |
 | [App Configuration](docs/APP-CONFIG.md) | Configure each app — [script-assisted](docs/APP-CONFIG-QUICK.md) or [manual](docs/APP-CONFIG.md) |
 | [Local DNS](docs/LOCAL-DNS.md) | Set up `.lan` domains with Pi-hole + Traefik |
+| [Pi-hole Boot Recovery](docs/PIHOLE-BOOT-RECOVERY.md) | Optional UGREEN startup check for missing Pi-hole network attachments |
 | [Remote Access (Cloudflared)](docs/REMOTE-ACCESS.md) | Access Jellyfin/Seerr from anywhere via your domain |
 | [Tailscale](docs/TAILSCALE.md) | Reach the whole LAN from anywhere via mesh VPN |
 | [Utilities](docs/UTILITIES.md) | Monitoring, auto-recovery, disk usage tools |
